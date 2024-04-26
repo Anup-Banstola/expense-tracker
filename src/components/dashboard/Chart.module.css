@@ -1,0 +1,8 @@
+.chart {
+  max-width: auto;
+  max-height: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-bottom: 5vh;
+  object-fit: contain;
+}

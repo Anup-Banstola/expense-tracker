@@ -1,0 +1,20 @@
+.history {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0eeee;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.recenthistory {
+  margin-right: 45px;
+  margin-left: 15px;
+}
