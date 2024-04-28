@@ -56,13 +56,7 @@ function YearlyStatistics() {
         `Highest transaction amount recorded in ${highestTransaction.date} : Rs.${highestTransaction.transactionAmount}`
       );
     }
-  }, [
-    storedExpenses,
-    storedIncomes,
-    yearlyExpenses,
-    yearlyIncomes,
-    highestTransaction,
-  ]);
+  }, []);
 
   return (
     <div className={styles.yearly}>

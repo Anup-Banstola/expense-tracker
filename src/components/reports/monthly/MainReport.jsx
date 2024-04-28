@@ -1,11 +1,14 @@
 import Navbar from "../daily/Navbar";
 import MonthlyStatistics from "./MonthlyStatistics";
+import styles from "./MainReport.module.css";
+import MonthlyDoughNutChart from "./MonthlyDoughNutChart";
 
 function MainReport() {
   return (
-    <div>
+    <div className={styles.monthlyreport}>
       <Navbar />
       <MonthlyStatistics />
+      <MonthlyDoughNutChart />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./MainCategory.module.css";
 
 import AddCategoryPopup from "./AddCategoryPopup";
@@ -7,7 +7,15 @@ import CategoryList from "./CategoryList";
 
 function MainCategory() {
   const [showPopup, setShowPopup] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(() => {
+    const storedCategories = JSON.parse(localStorage.getItem("categories"));
+
+    return storedCategories || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("categories", JSON.stringify(categories));
+  }, [categories]);
 
   const togglePopup = () => setShowPopup(!showPopup);
 

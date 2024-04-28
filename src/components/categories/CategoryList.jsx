@@ -7,6 +7,9 @@ function CategoryList({ categories }) {
         <div key={index} className={styles.addcategory}>
           <img
             src={`../../../assets/categoryicons/${category.categoryImageName}.svg`}
+            onError={(e) => {
+              e.target.src = "../../../assets/categoryicons/others.svg";
+            }}
           />
           <span className={styles.title}>{category.categoryTitle}</span>
         </div>

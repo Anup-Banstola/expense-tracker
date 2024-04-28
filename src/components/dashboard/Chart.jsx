@@ -22,14 +22,8 @@ ChartJs.register(
   Legend,
   ArcElement
 );
-console.log("hello");
 
 function Chart() {
-  // const expenseData = [
-  //   15000, 18000, 16000, 14000, 12000, 10000, 8000, 11000, 13000, 9000, 10000,
-  //   13000,
-  // ];
-
   const storedExpenses = JSON.parse(localStorage.getItem("expenses") || "[]");
   const expenseData = storedExpenses.map((transaction) =>
     parseFloat(transaction.transactionAmount)
@@ -53,21 +47,6 @@ function Chart() {
     (a, b) => new Date(`2000-${a}-01`) - new Date(`2000-${b}-01`)
   );
 
-  // const months = [
-  //   "Jan",
-  //   "Feb",
-  //   "Mar",
-  //   "Apr",
-  //   "May",
-  //   "Jun",
-  //   "Jul",
-  //   "Aug",
-  //   "Sep",
-  //   "Oct",
-  //   "Nov",
-  //   "Dec",
-  // ];
-
   const data = {
     labels: sortedMonths,
 
@@ -90,10 +69,64 @@ function Chart() {
     ],
   };
   return (
-    <div>
+    <div className={styles.chartContainer}>
       <Line data={data} className={styles.chart} />
     </div>
   );
 }
-
 export default Chart;
+
+// import React, { useState, useEffect } from "react";
+// import Chart from "react-apexcharts";
+
+// function Graph() {
+//   const [chartData, setChartData] = useState({});
+
+//   useEffect(() => {
+//     const storedExpenses = JSON.parse(localStorage.getItem("expenses") || "[]");
+//     const storedIncomes = JSON.parse(localStorage.getItem("incomes") || "[]");
+//     const expenseData = storedExpenses.map((transaction) => ({
+//       x: transaction.date,
+//       y: parseFloat(transaction.transactionAmount),
+//     }));
+//     const incomeData = storedIncomes.map((transaction) => ({
+//       x: transaction.date,
+//       y: parseFloat(transaction.transactionAmount),
+//     }));
+
+//     console.log("Expense Data:", expenseData);
+//     console.log("Income Data:", incomeData);
+//   }, []);
+//   //   setChartData({
+//   //     series: [
+//   //       {
+//   //         name: "Expenses",
+//   //         data: expenseData,
+//   //       },
+//   //       {
+//   //         name: "Incomes",
+//   //         data: incomeData,
+//   //       },
+//   //     ],
+//   //   });
+//   // }, []);
+
+//   // const options = {
+//   //   chart: {
+//   //     type: "line",
+//   //     height: 350,
+//   //   },
+//   //   xaxis: {
+//   //     type: "category",
+//   //   },
+//   //   colors: ["#FE2525", "#14804C"],
+//   // };
+
+//   return (
+//     <div>
+//       <Chart type="line" width={750} height={350} />
+//     </div>
+//   );
+// }
+
+// export default Graph;

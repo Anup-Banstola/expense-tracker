@@ -1,5 +1,5 @@
-.daily {
-  background-color: rgb(158, 245, 245);
+.monthly {
+  background-color: rgb(147, 218, 218);
   padding: 10px;
   margin: 15px;
 
@@ -14,7 +14,7 @@
   padding: 15px;
 }
 
-.dailyreport {
+.monthlyreport {
   background-color: rgb(131, 103, 69);
   border-radius: 5px;
   padding: 10px;
