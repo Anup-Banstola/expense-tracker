@@ -18,4 +18,13 @@
   background-color: bisque;
   border-radius: 5px;
   padding: 10px;
+  margin: 15px;
+}
+
+.yearlychart {
+  background-color: rgb(173, 152, 55);
+
+  padding-bottom: 10px;
+  border-radius: 5px;
+  margin: 25px 15px;
 }

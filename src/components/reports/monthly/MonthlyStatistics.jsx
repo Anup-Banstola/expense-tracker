@@ -95,7 +95,7 @@ function MonthlyStatistics() {
         <div>{remarks}</div>
       </div>
 
-      <div>
+      {/* <div>
         <h3>Expenses</h3>
         {Object.values(monthlyExpenses).length > 0 && (
           <MonthlyDoughNutChart
@@ -112,7 +112,7 @@ function MonthlyStatistics() {
             labels={Object.keys(monthlyIncomes)}
           />
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
