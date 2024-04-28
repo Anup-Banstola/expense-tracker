@@ -1,3 +1,5 @@
+//Displaying monthly incomes and expenses in a combined charts
+
 // import React, { useEffect, useRef } from "react";
 // import Chart from "chart.js/auto";
 
@@ -58,14 +60,108 @@
 
 // export default MonthlyDoughNutChart;
 
+// import Chart from "react-apexcharts";
+// import styles from "./MonthlyDoughNutChart.module.css";
+
+// function MonthlyDoughNutChart() {
+//   const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || "[]";
+//   const storedIncomes = JSON.parse(localStorage.getItem("incomes")) || "[]";
+
+//   const allTransactions = [...storedExpenses, ...storedIncomes];
+
+//   const aggregateTransactionsByMonth = (transactions) => {
+//     const monthlyData = {};
+//     transactions.forEach((transaction) => {
+//       const month = new Date(transaction.date).toLocaleDateString("en-US", {
+//         year: "numeric",
+//         month: "short",
+//       });
+//       if (!monthlyData[month]) {
+//         monthlyData[month] = {};
+//       }
+//       const category = transaction.categoryName;
+//       if (!monthlyData[month][category]) {
+//         monthlyData[month][category] = 0;
+//       }
+//       monthlyData[month][category] += Number(transaction.transactionAmount);
+//     });
+//     return monthlyData;
+//   };
+
+//   const monthlyData = aggregateTransactionsByMonth(allTransactions);
+//   const months = Object.keys(monthlyData);
+
+//   return (
+//     <div className={styles.monthlyreport}>
+//       {months.map((month) => (
+//         <div key={month}>
+//           <h3 className={styles.chart}>Donut Chart - {month}</h3>
+//           <div className={styles.monthly}>
+//             {monthlyData[month] &&
+//             Object.keys(monthlyData[month]).length > 0 ? (
+//               <Chart
+//                 type="donut"
+//                 width={450}
+//                 height={350}
+//                 series={Object.values(monthlyData[month])}
+//                 options={{
+//                   labels: Object.keys(monthlyData[month]),
+//                   title: {
+//                     text: "Monthly Report",
+//                   },
+//                   subtitle: {
+//                     text: `Month: ${month}`,
+//                   },
+//                   plotOptions: {
+//                     pie: {
+//                       donut: {
+//                         labels: {
+//                           show: true,
+//                           fontSize: 16,
+//                           color: "#432454",
+//                         },
+//                       },
+//                     },
+//                   },
+//                   dataLabels: {
+//                     enabled: true,
+//                   },
+//                   responsive: [
+//                     {
+//                       breakpoint: 700,
+//                       options: {
+//                         chart: {
+//                           width: "100%",
+//                           height: "250",
+//                         },
+//                         legend: {
+//                           position: "bottom",
+//                         },
+//                       },
+//                     },
+//                   ],
+//                 }}
+//               />
+//             ) : (
+//               <p>No data available for {month}</p>
+//             )}
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default MonthlyDoughNutChart;
+
+//Displaying monthly incomes and expenses in a separate charts
+
 import Chart from "react-apexcharts";
 import styles from "./MonthlyDoughNutChart.module.css";
 
 function MonthlyDoughNutChart() {
-  const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || "[]";
-  const storedIncomes = JSON.parse(localStorage.getItem("incomes")) || "[]";
-
-  const allTransactions = [...storedExpenses, ...storedIncomes];
+  const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
+  const storedIncomes = JSON.parse(localStorage.getItem("incomes")) || [];
 
   const aggregateTransactionsByMonth = (transactions) => {
     const monthlyData = {};
@@ -86,26 +182,27 @@ function MonthlyDoughNutChart() {
     return monthlyData;
   };
 
-  const monthlyData = aggregateTransactionsByMonth(allTransactions);
-  const months = Object.keys(monthlyData);
+  const monthlyExpenses = aggregateTransactionsByMonth(storedExpenses);
+  const monthlyIncomes = aggregateTransactionsByMonth(storedIncomes);
+  const months = Object.keys(monthlyExpenses);
 
   return (
     <div className={styles.monthlyreport}>
       {months.map((month) => (
-        <div key={month}>
-          <h3 className={styles.chart}>Donut Chart - {month}</h3>
+        <div key={month} className={styles.monthlychart}>
+          <h3 className={styles.chart}>Expenses - {month}</h3>
           <div className={styles.monthly}>
-            {monthlyData[month] &&
-            Object.keys(monthlyData[month]).length > 0 ? (
+            {monthlyExpenses[month] &&
+            Object.keys(monthlyExpenses[month]).length > 0 ? (
               <Chart
                 type="donut"
                 width={450}
                 height={350}
-                series={Object.values(monthlyData[month])}
+                series={Object.values(monthlyExpenses[month])}
                 options={{
-                  labels: Object.keys(monthlyData[month]),
+                  labels: Object.keys(monthlyExpenses[month]),
                   title: {
-                    text: "Monthly Report",
+                    text: "Monthly Expenses Report",
                   },
                   subtitle: {
                     text: `Month: ${month}`,
@@ -141,7 +238,58 @@ function MonthlyDoughNutChart() {
                 }}
               />
             ) : (
-              <p>No data available for {month}</p>
+              <p>No data available for expenses in {month}</p>
+            )}
+          </div>
+          <h3 className={styles.chart}>Incomes - {month}</h3>
+          <div className={styles.monthly}>
+            {monthlyIncomes[month] &&
+            Object.keys(monthlyIncomes[month]).length > 0 ? (
+              <Chart
+                type="donut"
+                width={450}
+                height={350}
+                series={Object.values(monthlyIncomes[month])}
+                options={{
+                  labels: Object.keys(monthlyIncomes[month]),
+                  title: {
+                    text: "Monthly Incomes Report",
+                  },
+                  subtitle: {
+                    text: `Month: ${month}`,
+                  },
+                  plotOptions: {
+                    pie: {
+                      donut: {
+                        labels: {
+                          show: true,
+                          fontSize: 16,
+                          color: "#432454",
+                        },
+                      },
+                    },
+                  },
+                  dataLabels: {
+                    enabled: true,
+                  },
+                  responsive: [
+                    {
+                      breakpoint: 700,
+                      options: {
+                        chart: {
+                          width: "100%",
+                          height: "250",
+                        },
+                        legend: {
+                          position: "bottom",
+                        },
+                      },
+                    },
+                  ],
+                }}
+              />
+            ) : (
+              <p>No data available for incomes in {month}</p>
             )}
           </div>
         </div>
