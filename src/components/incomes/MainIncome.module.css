@@ -18,6 +18,8 @@
 .container {
   overflow-x: hidden;
   overflow-y: scroll;
+  width: 100vw;
+  background-color: rgb(59, 154, 167);
 }
 
 @media screen and (max-width: 415px) {

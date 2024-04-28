@@ -19,6 +19,7 @@
   flex: 1;
   overflow-x: hidden;
   overflow-y: scroll;
+  background-color: rgb(59, 154, 167);
 }
 
 .error {
