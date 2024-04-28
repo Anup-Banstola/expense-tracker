@@ -1,13 +1,14 @@
 import DailyStatistics from "./DailyStatistics";
-import DoughNutChart from "./DoughNutChart";
+import DailyDoughNutChart from "./DoughNutChart";
 import Navbar from "./Navbar";
+import styles from "./MainReport.module.css";
 
 function MainReport() {
   return (
-    <div>
+    <div className={styles.dailyreport}>
       <Navbar />
       <DailyStatistics />
-      <DoughNutChart />
+      <DailyDoughNutChart />
     </div>
   );
 }

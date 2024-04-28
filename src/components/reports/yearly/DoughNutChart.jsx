@@ -7,44 +7,49 @@ function DoughNutChart() {
 
   const allTransactions = [...storedExpenses, ...storedIncomes];
 
-  const aggregateTransactionsByDay = (transactions) => {
-    const dailyData = {};
+  const aggregateTransactionsByYear = (transactions) => {
+    const yearlyData = {};
     transactions.forEach((transaction) => {
-      const date = new Date(transaction.date).toLocaleDateString();
-      if (!dailyData[date]) {
-        dailyData[date] = {};
+      const year = new Date(transaction.date).getFullYear();
+      if (!yearlyData[year]) {
+        yearlyData[year] = {};
       }
+      console.log(yearlyData[year]);
       const category = transaction.categoryName;
-      if (!dailyData[date][category]) {
-        dailyData[date][category] = 0;
+      console.log(category);
+      if (!yearlyData[year][category]) {
+        yearlyData[year][category] = 0;
       }
-      dailyData[date][category] += Number(transaction.transactionAmount);
+      console.log(yearlyData[year][category]);
+      yearlyData[year][category] += Number(transaction.transactionAmount);
     });
-    return dailyData;
+    return yearlyData;
   };
 
-  const dailyData = aggregateTransactionsByDay(allTransactions);
-  const dates = Object.keys(dailyData);
+  const yearlyData = aggregateTransactionsByYear(allTransactions);
+
+  const years = Object.keys(yearlyData);
+  console.log(years);
 
   return (
-    <div className={styles.dailyreport}>
-      {dates.map((date) => (
-        <div key={date}>
-          <h3 className={styles.chart}>Donut Chart - {date}</h3>
+    <div className={styles.yearly}>
+      {years.map((year) => (
+        <div key={year}>
+          <h3 className={styles.chart}>Donut Chart - {year}</h3>
           <div className={styles.daily}>
-            {dailyData[date] && Object.keys(dailyData[date]).length > 0 ? (
+            {yearlyData[year] && Object.keys(yearlyData[year]).length > 0 ? (
               <Chart
                 type="donut"
                 width={450}
                 height={350}
-                series={Object.values(dailyData[date])}
+                series={Object.values(yearlyData[year])}
                 options={{
-                  labels: Object.keys(dailyData[date]),
+                  labels: Object.keys(yearlyData[year]),
                   title: {
-                    text: "Daily Report",
+                    text: "Yearly Report",
                   },
                   subtitle: {
-                    text: `Date: ${date}`,
+                    text: `Year: ${year}`,
                   },
                   plotOptions: {
                     pie: {
@@ -53,14 +58,13 @@ function DoughNutChart() {
                           show: true,
                           total: {
                             show: true,
-                            fontSize: 25,
+                            fontSize: 16,
                             color: "#438024",
                           },
                         },
                       },
                     },
                   },
-
                   dataLabels: {
                     enabled: true,
                   },
@@ -81,7 +85,7 @@ function DoughNutChart() {
                 }}
               />
             ) : (
-              <p>No data available for {date}</p>
+              <p>No data available for {year}</p>
             )}
           </div>
         </div>
@@ -89,4 +93,5 @@ function DoughNutChart() {
     </div>
   );
 }
+
 export default DoughNutChart;

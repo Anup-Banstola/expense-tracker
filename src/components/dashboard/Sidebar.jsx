@@ -27,18 +27,18 @@ function Sidebar() {
 
   return (
     <>
-      {/*<button className={styles.toggleButton} onClick={toggleSidebar}>
-        {showSidebar ? "Hide Sidebar" : "Show Sidebar"}
-  </button>*/}
       <div className={styles.sidebar}>
-        <div className={styles.logotitle}>
-          <img
-            src="../../assets/icons/logo.svg"
-            alt="logo"
-            title="Expense Tracker"
-          />
-          <h2 className={styles.title}>Expense Tracker</h2>
-        </div>
+        <NavLink to="/" className={styles.headlink}>
+          <div className={styles.logotitle}>
+            <img
+              src="../../assets/icons/logo.svg"
+              alt="logo"
+              title="Expense Tracker"
+              className={styles.logo}
+            />
+            <h2 className={styles.title}>Expense Tracker</h2>
+          </div>
+        </NavLink>
         {isSmallScreen ? (
           <FontAwesomeIcon
             icon={faHouse}

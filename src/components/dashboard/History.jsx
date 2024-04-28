@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Chart from "./Chart.jsx";
 import styles from "./History.module.css";
+import Graph from "./Chart.jsx";
 function History() {
   const [transactionHistory, setTransactionHistory] = useState([]);
 
@@ -18,21 +19,22 @@ function History() {
       <Chart />
 
       <div className={styles.recenthistory}>
-        <p>Recent History</p>
-
-        {transactionHistory.map((transaction, index) => (
-          <div
-            key={index}
-            className={`${styles.history} ${
-              transaction.categoryName.toLowerCase() === "income"
-                ? styles.income
-                : styles.expense
-            }`}
-          >
-            <p>{transaction.categoryName}</p>
-            <span>{`Rs. ${transaction.transactionAmount}`}</span>
-          </div>
-        ))}
+        <span>Recent History</span>
+        <div className={styles.tranhistory}>
+          {transactionHistory.slice(0, 3).map((transaction, index) => (
+            <div
+              key={index}
+              className={`${styles.history} ${
+                transaction.categoryName.toLowerCase() === "salary"
+                  ? styles.income
+                  : styles.expense
+              }`}
+            >
+              <span>{transaction.categoryName}</span>
+              <span>{`Rs. ${transaction.transactionAmount}`}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

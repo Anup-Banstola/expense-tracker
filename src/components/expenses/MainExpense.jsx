@@ -96,7 +96,9 @@ function MainExpense() {
           />
           {error && <div className={styles.error}>{error}</div>}
 
-          <div className={styles.balance}>Current Balance:{accountBalance}</div>
+          <div className={styles.balance}>
+            Current Balance:{formatAmount(accountBalance)}
+          </div>
         </main>
       </div>
     </>

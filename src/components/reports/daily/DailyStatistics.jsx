@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "./DailyStatistics.module.css";
-// import DoughNutChart from "./DoughNutChart";
 
 function formatAmount(amount) {
   return new Intl.NumberFormat("en-NP", {
@@ -54,17 +53,7 @@ function DailyStatistics() {
         `Highest transaction amount recorded on ${highestTransaction.date}: ${highestTransaction.transactionAmount}`
       );
     }
-  }, [
-    storedExpenses,
-    storedIncomes,
-    dailyExpenses,
-    dailyIncomes,
-    highestTransaction,
-  ]);
-  // const expenseData = Object.values(dailyExpenses);
-  // const incomeData = Object.values(dailyIncomes);
-  // const expenseLabels = Object.keys(dailyExpenses);
-  // const incomeLabels = Object.keys(dailyIncomes);
+  }, []);
 
   return (
     <div className={styles.dailyreport}>
@@ -99,23 +88,6 @@ function DailyStatistics() {
         <h3>Remarks</h3>
         <div>{remarks}</div>
       </div>
-      {/* <div>
-        <h3>Donut Chart</h3>
-        <DoughNutChart expenses={dailyExpenses} incomes={dailyIncomes} />
-      </div> */}
-
-      {/* <div>
-        <h3>Expenses</h3>
-        {expenseData.length > 0 && (
-          <DoughNutChart data={expenseData} labels={expenseLabels} />
-        )}
-      </div> */}
-      {/* <div>
-        <h3>Incomes</h3>
-        {incomeData.length > 0 && (
-          <DoughNutChart data={incomeData} labels={incomeLabels} />
-        )}
-      </div> */}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Button from "./Button.jsx";
 
 import styles from "./Hero.module.css";
 import History from "./History.jsx";
+import Chart from "./Chart.jsx";
 
 function Hero() {
   const [totalExpenses, setTotalExpenses] = useState(0);

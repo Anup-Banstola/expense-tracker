@@ -61,13 +61,7 @@ function MonthlyStatistics() {
         `Highest transaction amount recorded in ${highestTransaction.date}: Rs.${highestTransaction.transactionAmount}`
       );
     }
-  }, [
-    storedExpenses,
-    storedIncomes,
-    monthlyExpenses,
-    monthlyIncomes,
-    highestTransaction,
-  ]);
+  }, []);
 
   return (
     <div className={styles.monthly}>
