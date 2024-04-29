@@ -80,6 +80,8 @@ function Hero() {
           </div>
         </div>
 
+        {/* <p>Hello world</p> */}
+
         <div className={styles.btns}>
           <Button className="totalbal">
             <p>Total Balance</p>
