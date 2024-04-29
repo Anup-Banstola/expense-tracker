@@ -72,7 +72,7 @@ function YearlyStatistics() {
         <h3>Incomes</h3>
         {Object.entries(yearlyIncomes).map(([year, total]) => (
           <div key={year}>
-            Year: {year} -- Total Income: {formatAmount(total)}
+            Year: {year} -- Total Incomes: {formatAmount(total)}
           </div>
         ))}
       </div>

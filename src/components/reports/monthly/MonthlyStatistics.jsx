@@ -69,7 +69,7 @@ function MonthlyStatistics() {
         <h3>Expenses</h3>
         {Object.entries(monthlyExpenses).map(([month, total]) => (
           <div key={month}>
-            Month: {month} - TotalExpenses: {formatAmount(total)}
+            Month: {month} - Total Expenses: {formatAmount(total)}
           </div>
         ))}
       </div>
@@ -77,7 +77,7 @@ function MonthlyStatistics() {
         <h3>Incomes</h3>
         {Object.entries(monthlyIncomes).map(([month, total]) => (
           <div key={month}>
-            Month: {month} - Total Income: {formatAmount(total)}
+            Month: {month} - Total Incomes: {formatAmount(total)}
           </div>
         ))}
       </div>

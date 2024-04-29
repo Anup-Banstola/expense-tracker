@@ -61,7 +61,7 @@ function DailyStatistics() {
         <h3>Expenses</h3>
         {Object.entries(dailyExpenses).map(([date, total]) => (
           <div key={date}>
-            Date: {date} - TotalExpenses: {formatAmount(total)}
+            Date: {date} - Total Expenses: {formatAmount(total)}
           </div>
         ))}
       </div>
@@ -70,7 +70,7 @@ function DailyStatistics() {
         <h3>Incomes</h3>
         {Object.entries(dailyIncomes).map(([date, total]) => (
           <div key={date}>
-            Date: {date} - TotalIncomes: {formatAmount(total)}
+            Date: {date} - Total Incomes: {formatAmount(total)}
           </div>
         ))}
       </div>
