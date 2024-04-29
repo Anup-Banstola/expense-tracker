@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Chart from "./Chart.jsx";
 import styles from "./History.module.css";
-import Graph from "./Chart.jsx";
+
 function History() {
   const [transactionHistory, setTransactionHistory] = useState([]);
 
@@ -12,6 +12,7 @@ function History() {
 
     combinedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
     setTransactionHistory(combinedTransactions);
+    console.log(combinedTransactions);
   }, []);
 
   return (
@@ -25,7 +26,7 @@ function History() {
             <div
               key={index}
               className={`${styles.history} ${
-                transaction.categoryName.toLowerCase() === "salary"
+                transaction.description.toLowerCase() === "income"
                   ? styles.income
                   : styles.expense
               }`}

@@ -49,6 +49,7 @@ function AddIncomePopup({ onClose, onAddIncome }) {
               <option value="salary">Salary</option>
               <option value="rent">Rent</option>
               <option value="bankaccount">Bank account</option>
+              <option value="gift">Gift</option>
               <option value="others">Others</option>
             </select>
           </div>
