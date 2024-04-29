@@ -65,36 +65,6 @@ function Hero() {
       <main className={styles.hero}>
         <h2 className={styles.dash}>Dashboard</h2>
 
-        {/* <div className={styles.amounts}>
-          <div className={styles.balance}>
-            <h2>Total Balance</h2>
-            <p className={styles.bal}>Rs.3,000</p>
-          </div>
-          <div className={styles.income}>
-            <h2>Total Incomes</h2>
-            <p className={styles.inc}>Rs.15,000</p>
-          </div>
-          <div className={styles.expense}>
-            <h2>Total Expenses</h2>
-            <p className={styles.exp}>Rs.12,000</p>
-          </div>
-        </div> */}
-
-        {/* {/*<div className={styles.amounts}>
-          <div className={styles.balance}>
-            <h2>Total Balance</h2>
-            <p className={styles.bal}>Rs.3,000</p>
-          </div>
-          <div className={styles.income}>
-            <h2>Total Incomes</h2>
-            <p className={styles.inc}>Rs.15,000</p>
-          </div>
-          <div className={styles.expense}>
-            <h2>Total Expenses</h2>
-            <p className={styles.exp}>Rs.12,000</p>
-          </div>
-        </div> */}
-
         <div className={styles.amounts}>
           <div className={styles.balance}>
             <h2>Total Balance</h2>
