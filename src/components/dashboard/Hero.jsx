@@ -80,34 +80,6 @@ function Hero() {
           </div>
         </div>
 
-        {/*<div className={styles.btns}>
-          <Button className="totalBalance">
-            <p>Total Balance</p>
-            <h2>Rs.3,000</h2>
-          </Button>
-          <Button className="totalIncome">
-            <p>Total Incomes</p>
-            <h2>Rs.4,000</h2>
-          </Button>
-          <Button className="totalExpense">
-            <p>Total Expenses</p>
-            <h2>Rs.5,000</h2>
-          </Button>
-        </div>
-        <div className={styles.btns}>
-          <Button className="totalBalance">
-            <p>Total Balance</p>
-            <h2>Rs.3,000</h2>
-          </Button>
-          <Button className="totalIncome">
-            <p>Total Incomes</p>
-            <h2>Rs.4,000</h2>
-          </Button>
-          <Button className="totalExpense">
-            <p>Total Expenses</p>
-            <h2>Rs.5,000</h2>
-          </Button>
-        </div>*/}
         <div className={styles.btns}>
           <Button className="totalbal">
             <p>Total Balance</p>
