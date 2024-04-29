@@ -80,9 +80,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* <p>Hello world</p> */}
-
-        <div className={styles.btns}>
+        {/*<div className={styles.btns}>
           <Button className="totalbal">
             <p>Total Balance</p>
             <h2>Rs. {formattedTotalBalance}</h2>
@@ -95,7 +93,7 @@ function Hero() {
             <p>Total Expenses</p>
             <h2>Rs. {formattedTotalExpenses}</h2>
           </Button>
-        </div>
+  </div>*/}
 
         <p className={styles.overview}>Overview</p>
 
