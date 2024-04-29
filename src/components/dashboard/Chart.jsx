@@ -1,3 +1,4 @@
+import { Line } from "react-chartjs-2";
 import styles from "./Chart.module.css";
 
 import {
@@ -10,7 +11,6 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
 
 ChartJs.register(
   CategoryScale,

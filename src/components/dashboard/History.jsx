@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 import Chart from "./Chart.jsx";
 import styles from "./History.module.css";
 
+function formatAmount(amount) {
+  return new Intl.NumberFormat("en-NP", {
+    style: "currency",
+    currency: "NPR",
+  }).format(amount);
+}
+
 function History() {
   const [transactionHistory, setTransactionHistory] = useState([]);
 
@@ -32,7 +39,7 @@ function History() {
               }`}
             >
               <span>{transaction.categoryName}</span>
-              <span>{`Rs. ${transaction.transactionAmount}`}</span>
+              <span>{`${formatAmount(transaction.transactionAmount)}`}</span>
             </div>
           ))}
         </div>
