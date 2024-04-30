@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Button from "./Button.jsx";
 
 import styles from "./Hero.module.css";
 import History from "./History.jsx";
@@ -79,24 +78,6 @@ function Hero() {
             <p className={styles.exp}>Rs.{formattedTotalExpenses}</p>
           </div>
         </div>
-
-        {/*<div className={styles.btns}>
-          <Button className="totalbal">
-            <p>Total Balance</p>
-            <h2>Rs. {formattedTotalBalance}</h2>
-          </Button>
-          <Button className="totalinc">
-            <p>Total Incomes</p>
-            <h2>Rs. {formattedTotalIncomes}</h2>
-          </Button>
-          <Button className="totalexp">
-            <p>Total Expenses</p>
-            <h2>Rs. {formattedTotalExpenses}</h2>
-          </Button>
-
-
-          
-  </div>*/}
 
         <p className={styles.overview}>Overview</p>
 

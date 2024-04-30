@@ -44,16 +44,16 @@ function DailyStatistics() {
 
     if (storedIncomes.length === 0 && storedExpenses.length === 0) {
       setRemarks("No transactions recorded yet.");
-    } else if (dailyIncomes.length === 0) {
+    } else if (Object.keys(dailyIncomes).length === 0) {
       setRemarks("No income recorded for today.");
-    } else if (dailyExpenses.length === 0) {
+    } else if (Object.keys(dailyExpenses).length === 0) {
       setRemarks("No expenses recorded for today.");
     } else if (highestTransaction) {
       setRemarks(
         `Highest transaction amount recorded on ${highestTransaction.date}: ${highestTransaction.transactionAmount}`
       );
     }
-  }, []);
+  }, [remarks]);
 
   return (
     <div className={styles.dailyreport}>
