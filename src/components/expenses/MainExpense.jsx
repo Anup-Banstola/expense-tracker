@@ -15,7 +15,22 @@ function MainExpense() {
   const [expenses, setExpenses] = useState(() => {
     const storedExpenses = JSON.parse(localStorage.getItem("expenses"));
 
-    return storedExpenses || [];
+    return (
+      storedExpenses || [
+        {
+          transactionAmount: "13423",
+          categoryName: "education",
+          date: "2024-04-22",
+          description: "Expense",
+        },
+        {
+          transactionAmount: "35423",
+          categoryName: "rent",
+          date: "2024-04-28",
+          description: "Expense",
+        },
+      ]
+    );
   });
 
   const [accountBalance, setAccountBalance] = useState();

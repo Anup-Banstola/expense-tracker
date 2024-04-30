@@ -8,7 +8,22 @@ function MainIncome() {
 
   const [incomes, setIncomes] = useState(() => {
     const storedIncomes = JSON.parse(localStorage.getItem("incomes"));
-    return storedIncomes || [];
+    return (
+      storedIncomes || [
+        {
+          transactionAmount: "342423",
+          categoryName: "salary",
+          date: "2024-04-22",
+          description: "Income",
+        },
+        {
+          transactionAmount: "35423",
+          categoryName: "salary",
+          date: "2024-01-28",
+          description: "Income",
+        },
+      ]
+    );
   });
 
   const togglePopup = () => setShowPopup(!showPopup);
