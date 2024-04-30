@@ -53,10 +53,12 @@ function YearlyStatistics() {
       setRemarks("No expenses recorded for this year.");
     } else if (highestTransaction) {
       setRemarks(
-        `Highest transaction amount recorded in ${highestTransaction.date} : Rs.${highestTransaction.transactionAmount}`
+        `Highest transaction amount recorded in ${
+          highestTransaction.date
+        } : Rs.${formatAmount(highestTransaction.transactionAmount)}`
       );
     }
-  }, []);
+  }, [remarks]);
 
   return (
     <div className={styles.yearly}>
@@ -75,6 +77,15 @@ function YearlyStatistics() {
             Year: {year} -- Total Incomes: {formatAmount(total)}
           </div>
         ))}
+      </div>
+      <div>
+        <h3>Highest Transaction</h3>
+        {highestTransaction && (
+          <div>
+            Amount: {highestTransaction.transactionAmount}, Category:{" "}
+            {highestTransaction.categoryName}, Date: {highestTransaction.date}
+          </div>
+        )}
       </div>
       <div>
         <h3>Remarks</h3>

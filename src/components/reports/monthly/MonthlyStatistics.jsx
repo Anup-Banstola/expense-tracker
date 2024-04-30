@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "./MonthlyStatistics.module.css";
-import MonthlyDoughNutChart from "./MonthlyDoughNutChart";
 
 function formatAmount(amount) {
   return new Intl.NumberFormat("en-NP", {
@@ -61,7 +60,7 @@ function MonthlyStatistics() {
         `Highest transaction amount recorded in ${highestTransaction.date}: Rs.${highestTransaction.transactionAmount}`
       );
     }
-  }, []);
+  }, [remarks]);
 
   return (
     <div className={styles.monthly}>
@@ -69,7 +68,7 @@ function MonthlyStatistics() {
         <h3>Expenses</h3>
         {Object.entries(monthlyExpenses).map(([month, total]) => (
           <div key={month}>
-            Month: {month} - Total Expenses: {formatAmount(total)}
+            Month: ({month}) -- Total Expenses: {formatAmount(total)}
           </div>
         ))}
       </div>
@@ -77,7 +76,7 @@ function MonthlyStatistics() {
         <h3>Incomes</h3>
         {Object.entries(monthlyIncomes).map(([month, total]) => (
           <div key={month}>
-            Month: {month} - Total Incomes: {formatAmount(total)}
+            Month: ({month}) -- Total Incomes: {formatAmount(total)}
           </div>
         ))}
       </div>
@@ -94,25 +93,6 @@ function MonthlyStatistics() {
         <h3>Remarks</h3>
         <div>{remarks}</div>
       </div>
-
-      {/* <div>
-        <h3>Expenses</h3>
-        {Object.values(monthlyExpenses).length > 0 && (
-          <MonthlyDoughNutChart
-            data={Object.values(monthlyExpenses)}
-            labels={Object.keys(monthlyExpenses)}
-          />
-        )}
-      </div>
-      <div>
-        <h3>Incomes</h3>
-        {Object.values(monthlyIncomes).length > 0 && (
-          <MonthlyDoughNutChart
-            data={Object.values(monthlyIncomes)}
-            labels={Object.keys(monthlyIncomes)}
-          />
-        )}
-      </div> */}
     </div>
   );
 }

@@ -44,8 +44,6 @@ function MainExpense() {
 
   const togglePopup = () => setShowPopup(!showPopup);
 
-  const [error, setError] = useState("");
-
   function handleAddExpense(newExpense) {
     const amount = parseFloat(newExpense.transactionAmount);
     if (isNaN(amount)) {
@@ -94,7 +92,6 @@ function MainExpense() {
             expenses={expenses}
             handleDeleteExpense={handleDeleteExpense}
           />
-          {error && <div className={styles.error}>{error}</div>}
 
           <div className={styles.balance}>
             Current Balance:{formatAmount(accountBalance)}
