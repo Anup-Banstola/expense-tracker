@@ -3,15 +3,8 @@ import styles from "./Sidebar.module.css";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
+
 function Sidebar() {
-  {
-    /*const [showSidebar, setShowSidebar] = useState(true);
-
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };*/
-  }
-
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
@@ -24,6 +17,39 @@ function Sidebar() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const sidebarLinks = [
+    {
+      link: "/",
+      src: "../../assets/icons/dashboard.svg",
+      title: "Dashboard",
+      height: "25px",
+    },
+    {
+      link: "/categories",
+      src: "../../assets/icons/categories.svg",
+      title: "Categories",
+      height: "25px",
+    },
+    {
+      link: "/expenses",
+      src: "../../assets/icons/expense.svg",
+      title: "Expenses",
+      height: "25px",
+    },
+    {
+      link: "/incomes",
+      src: "../../assets/icons/incomes.svg",
+      title: "Incomes",
+      height: "25px",
+    },
+    {
+      link: "/reports",
+      src: "../../assets/icons/reports.svg",
+      title: "Reports",
+      height: "25px",
+    },
+  ];
 
   return (
     <>
@@ -46,52 +72,26 @@ function Sidebar() {
             title="MANAGE"
           />
         ) : (
-          // <img
-          //   src="../../assets/icons/home.svg"
-          //   alt="report-icon"
-          //   height="25px"
-          // />
           <p className={styles.mng}>Manage</p>
         )}
 
         <div className={styles.nav}>
-          <NavLink to="/" className={styles.navel} title="Dashboard">
-            <img src="../../assets/icons/dashboard.svg" alt="dashboard" />
-            <span className={styles.text}>Dashboard</span>
-          </NavLink>
-          <NavLink to="/categories" className={styles.navel} title="Categories">
-            <img
-              src="../../assets/icons/categories.svg"
-              alt="categories"
-              height="25px"
-            />
-            <span className={styles.text}>Categories</span>
-          </NavLink>
-          <NavLink to="/expenses" className={styles.navel} title="Expenses">
-            <img
-              src="../../assets/icons/expense.svg"
-              alt="expense-icon"
-              height="25px"
-            />
-            <span className={styles.text}>Expenses</span>
-          </NavLink>
-          <NavLink to="/incomes" className={styles.navel} title="Incomes">
-            <img
-              src="../../assets/icons/incomes.svg"
-              alt="income-icon"
-              height="25px"
-            />
-            <span className={styles.text}>Incomes</span>
-          </NavLink>
-          <NavLink to="/reports" className={styles.navel} title="Reports">
-            <img
-              src="../../assets/icons/reports.svg"
-              alt="report-icon"
-              height="25px"
-            />
+          {sidebarLinks.map((sidebar, index) => (
+            <NavLink
+              to={sidebar.link}
+              key={index}
+              className={styles.navel}
+              title={sidebar.title}
+            >
+              <img
+                src={sidebar.src}
+                alt={sidebar.title}
+                height={sidebar.height}
+              />
 
-            <span className={styles.text}>Reports</span>
-          </NavLink>
+              <span className={styles.text}>{sidebar.title}</span>
+            </NavLink>
+          ))}
         </div>
       </div>
     </>

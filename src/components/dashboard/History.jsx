@@ -13,11 +13,12 @@ function History() {
   const [transactionHistory, setTransactionHistory] = useState([]);
 
   useEffect(() => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenses"));
-    const storedIncomes = JSON.parse(localStorage.getItem("incomes"));
+    const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    const storedIncomes = JSON.parse(localStorage.getItem("incomes")) || [];
     const combinedTransactions = [...storedExpenses, ...storedIncomes];
 
-    combinedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+    combinedTransactions &&
+      combinedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
     setTransactionHistory(combinedTransactions);
     console.log(combinedTransactions);
   }, []);

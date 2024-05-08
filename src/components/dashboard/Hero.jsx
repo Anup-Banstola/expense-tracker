@@ -7,8 +7,8 @@ function Hero() {
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalIncomes, setTotalIncomes] = useState(0);
 
-  const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || "[]";
-  const storedIncomes = JSON.parse(localStorage.getItem("incomes")) || "[]";
+  const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
+  const storedIncomes = JSON.parse(localStorage.getItem("incomes")) || [];
   console.log(storedExpenses);
 
   useEffect(() => {
@@ -78,9 +78,7 @@ function Hero() {
             <p className={styles.exp}>Rs.{formattedTotalExpenses}</p>
           </div>
         </div>
-
         <p className={styles.overview}>Overview</p>
-
         <History />
       </main>
     </>
