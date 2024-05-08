@@ -1,20 +1,14 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./Hero.module.css";
 import History from "./History.jsx";
+import { useExpenseIncome } from "../../contexts/globalContext.jsx";
 
 function Hero() {
+  const { storedExpenses, storedIncomes } = useExpenseIncome();
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalIncomes, setTotalIncomes] = useState(0);
 
-  const storedExpenses = useMemo(
-    () => JSON.parse(localStorage.getItem("expenses")) || [],
-    []
-  );
-  const storedIncomes = useMemo(
-    () => JSON.parse(localStorage.getItem("incomes")) || [],
-    []
-  );
   console.log(storedExpenses);
 
   useEffect(() => {

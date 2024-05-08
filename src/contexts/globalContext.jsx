@@ -1,27 +1,31 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useState, useEffect, useMemo } from "react";
 
-const GlobalContext = createContext();
+// Create context
+const ExpenseIncomeContext = createContext();
 
-export const GlobalProvider = ({ children }) => {
-  const [expenses, setExpenses] = useState(() => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenses"));
-    return storedExpenses || [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-  }, [expenses]);
-
-  const [incomes, setIncomes] = useState(() => {
-    const storedIncomes = JSON.parse(localStorage.getItem("incomes"));
-    return storedIncomes || [];
-  });
+// Create provider
+export const ExpenseIncomeProvider = ({ children }) => {
+  const [storedExpenses, setStoredExpenses] = useState([]);
+  const [storedIncomes, setStoredIncomes] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("incomes", JSON.stringify(incomes));
-  }, [incomes]);
+    const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    const incomes = JSON.parse(localStorage.getItem("incomes")) || [];
+    setStoredExpenses(expenses);
+    setStoredIncomes(incomes);
+  }, []);
 
-  const [error, setError] = useState(null);
+  const contextValue = useMemo(
+    () => ({ storedExpenses, storedIncomes }),
+    [storedExpenses, storedIncomes]
+  );
 
-  return <GlobalContext.Provider>{children}</GlobalContext.Provider>;
+  return (
+    <ExpenseIncomeContext.Provider value={contextValue}>
+      {children}
+    </ExpenseIncomeContext.Provider>
+  );
 };
+
+// Custom hook to use context values
+export const useExpenseIncome = () => useContext(ExpenseIncomeContext);
